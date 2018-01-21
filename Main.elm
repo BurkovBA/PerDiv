@@ -213,19 +213,6 @@ update msg model =
                             , tickCount = 0
                             , superBadGuyTick = Nothing
                         }
-
-
-                        const a = 0
-
-                        a  funcA()
-
-                        b = a + 1
-
-
-                        model = 2
-
-                        { model | score = 1 }
-                        model
             in
             ( updatedState, Cmd.batch [ updatedCmd, Task.perform StartedTime Time.now ] )
 
