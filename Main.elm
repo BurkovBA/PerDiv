@@ -26,7 +26,6 @@ main =
 
 type alias Model =
     { gameState : GameState
-    , level : Maybe Level
     , startedTime : Maybe Time
     , lastTick : Maybe Time
     , tickCount : Int
@@ -36,7 +35,6 @@ type alias Model =
 initialModel : Model
 initialModel =
     { gameState = Welcome
-    , level = Nothing
     , startedTime = Nothing
     , lastTick = Nothing
     , tickCount = 0
@@ -53,7 +51,11 @@ init =
 
 type GameState
     = Welcome
-    | Playing
+    | Main
+    | TransferMarket
+    | Coaches
+    | Team
+    | Owner
     | Results
 
 
@@ -138,11 +140,23 @@ view model =
         Welcome ->
             welcomeView
 
-        Playing ->
-            inGameView model
+        Main ->
+            MainView model
+
+        TransferMarket ->
+            TransferMarketView model
+
+        Coaches ->
+            CoachesView model
+
+        Team ->
+            TeamView model
+
+        Owner ->
+            OwnerView model
 
         Results ->
-            resultsView model
+            ResultsView model
 
 
 welcomeView : Html Msg
